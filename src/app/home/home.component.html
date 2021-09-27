@@ -24,7 +24,9 @@
 
       </mat-card>
   </div>
-  <mat-paginator
+
+</ng-template>
+<mat-paginator
     class="pagination"
     [hidePageSize]="true"
     [pageSize]="20"
@@ -32,5 +34,4 @@
     aria-label="Select page"
     [showFirstLastButtons]="true"
     (page)="onPageChanges($event)">
-  </mat-paginator>
-</ng-template>
+</mat-paginator>
