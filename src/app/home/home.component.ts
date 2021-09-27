@@ -1,7 +1,8 @@
 import { PageInfo } from './../page-info';
 import { Character } from './../character';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FetchService } from '../fetch.service';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,8 @@ import { FetchService } from '../fetch.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  
 
   loading: boolean = true
   characters: Array<Character> = []
@@ -29,7 +32,6 @@ export class HomeComponent implements OnInit {
   fetchCharacters(id=1) {
     this.loading = true
     this.fetchService.getCharacters(id).subscribe((data: any) => {
-      console.log(data);
       this.characters = data.results;
       this.pageInfo = data.info
       this.loading = false
@@ -37,7 +39,6 @@ export class HomeComponent implements OnInit {
   }
 
   onPageChanges(e:any) {
-    console.log(e.pageIndex+1)
     this.fetchCharacters(e.pageIndex+1)
   }
 }

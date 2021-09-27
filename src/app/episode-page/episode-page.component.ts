@@ -57,7 +57,6 @@ export class EpisodePageComponent implements OnInit, AfterViewInit {
   }
 
   onPageChanges(e:any) {
-    console.log(e.pageIndex+1)
     this.fetchEpisodes(e.pageIndex+1)
   }
 

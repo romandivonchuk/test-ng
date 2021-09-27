@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
     MatInputModule,
     MatSortModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FlexLayoutModule
   ],
   exports: [RouterModule],
   declarations: [EpisodePageComponent]
