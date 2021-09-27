@@ -1,17 +1,31 @@
+
+
+
 <div class="wish-container">
   <h2>Wish List</h2>
-  <form class="example-form" (ngSubmit)="addToList()">
+
+  <form class="example-form" (ngSubmit)="addToList()" (keydown.enter)="addToList()">
     <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Episode </mat-label>
-      <input [formControl]="episode" matInput placeholder="name of episode" value="Pilot">
+      <mat-label>name of episode</mat-label>
+      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
     <button mat-raised-button color="primary">Primary</button>
   </form>
+
   <ol class="wishlist">
     <li *ngFor="let wish of wishList; let idx = index">
-      <p>{{wish}}</p>
+      <strong>{{wish.name}}&nbsp;</strong>
+
+      <span>{{wish.episode}}&nbsp;</span>
+      <span>{{wish['air_date']}}</span>
     </li>
   </ol>
+
 </div>
 
 
