@@ -1,0 +1,41 @@
+// .test {
+//   display: flex;
+//   justify-content: space-between;
+// }
+.char-container {
+  margin: 0 auto;
+  margin-top: 2rem;
+  max-width: 1100px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 20px;
+}
+
+.card {
+  position: relative;
+}
+
+.cart-status::before {
+  content: "";
+  display: inline-block;
+  margin-right: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+
+.cart-status.green::before{
+  background-color: green;
+}
+
+.cart-status.red::before {
+  background-color: red;
+}
+
+.cart-status.gray::before {
+  background-color: gray;
+}
+

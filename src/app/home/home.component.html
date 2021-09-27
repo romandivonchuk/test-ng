@@ -1,0 +1,36 @@
+<div *ngIf="loading; else elseBlock" class="loading">
+  <mat-spinner></mat-spinner>
+</div>
+  <ng-template #elseBlock>
+
+  <div class="char-container">
+      <mat-card class="card" *ngFor="let character of characters" >
+        <mat-card-header>
+          <mat-card-title>{{character.name}}</mat-card-title>
+          <mat-card-subtitle
+            [class.red]="character.status == 'Dead'"
+            [class.green]="character.status == 'Alive'"
+            [class.gray]="character.status == 'unknown'"
+            class="cart-status"
+          >Status:{{character.status}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="character.image" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>Last known location:</p>
+          <p><strong>{{character.location.name | uppercase}}</strong></p>
+          <p>species: <strong>{{character.species}}</strong></p>
+          <p>gender: <strong>{{character.gender}}</strong></p>
+        </mat-card-content>
+
+      </mat-card>
+  </div>
+  <mat-paginator
+    class="pagination"
+    [hidePageSize]="true"
+    [pageSize]="20"
+    [length]="pageInfo.count"
+    aria-label="Select page"
+    [showFirstLastButtons]="true"
+    (page)="onPageChanges($event)">
+  </mat-paginator>
+</ng-template>

@@ -1,0 +1,48 @@
+<div *ngIf="loading; else elseBlock" class="loading">
+  <mat-spinner></mat-spinner>
+</div>
+<ng-template #elseBlock>
+<div class="mat-elevation-z8" >
+  <table mat-table  [dataSource]="dataSource"  matSort >
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="episode">
+      <th mat-header-cell *matHeaderCellDef > Episode </th>
+      <td mat-cell *matCellDef="let row"> {{row.episode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="created">
+      <th mat-header-cell *matHeaderCellDef > Created </th>
+      <td mat-cell *matCellDef="let row"> {{row.created | date:'medium'}} </td>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+  </table>
+
+  <mat-paginator
+    class="pagination"
+    [hidePageSize]="true"
+    [pageSize]="20"
+    [length]="pageInfo.count"
+    aria-label="Select page"
+    [showFirstLastButtons]="true"
+    (page)="onPageChanges($event)" aria-label="Select page of users"
+  ></mat-paginator>
+</div>
+</ng-template>

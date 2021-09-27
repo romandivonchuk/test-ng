@@ -1,0 +1,19 @@
+<div class="wish-container">
+  <h2>Wish List</h2>
+  <form class="example-form" (ngSubmit)="addToList()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Episode </mat-label>
+      <input [formControl]="episode" matInput placeholder="name of episode" value="Pilot">
+    </mat-form-field>
+    <button mat-raised-button color="primary">Primary</button>
+  </form>
+  <ol class="wishlist">
+    <li *ngFor="let wish of wishList; let idx = index">
+      <p>{{wish}}</p>
+    </li>
+  </ol>
+</div>
+
+
+
+
